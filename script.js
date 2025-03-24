@@ -25,9 +25,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const productUrl = link.getAttribute('data-product-url');
       const referralUrl = `${productUrl}?aff=${encodeURIComponent(userEmail)}`;
       link.href = referralUrl;
-      link.textContent = 'Referral Link Ready!';
+      link.textContent = 'Link Referral Anda Siap Digunakan!';
     });
 
-    alert('Your referral links have been updated!');
+    alert('Link referral Anda sudah diperbaharui!');
   });
 });
