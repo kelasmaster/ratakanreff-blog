@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const userEmail = userEmailInput.value.trim();
 
     if (!userEmail) {
-      alert('Please enter your email address.');
+      alert('Tulis alamat email dengan benar. Pastikan sudah terdaftar di Ratakan.');
       return;
     }
 
