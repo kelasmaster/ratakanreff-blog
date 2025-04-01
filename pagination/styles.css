@@ -1,0 +1,68 @@
+/* styles.css */
+
+/* Existing CSS */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background: #007BFF;
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+}
+
+main {
+  padding: 1rem;
+}
+
+.articles article {
+  margin-bottom: 1.5rem;
+}
+
+.product-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #007BFF;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.referral-generator {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+#user-email {
+  padding: 0.5rem;
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 1rem;
+}
+
+#generate-links {
+  padding: 0.5rem 1rem;
+  background: #28A745;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+#generate-links:hover {
+  background: #218838;
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+
+  .product-link {
+    font-size: 0.9rem;
+  }
+}
