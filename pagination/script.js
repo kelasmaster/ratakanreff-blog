@@ -4,6 +4,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const userEmailInput = document.getElementById('user-email');
   const generateLinksButton = document.getElementById('generate-links');
   const articleContainer = document.getElementById('article-container');
+  const prevPageButton = document.getElementById('prev-page');
+  const nextPageButton = document.getElementById('next-page');
+  const pageInfo = document.getElementById('page-info');
 
   // Sample articles data
   const articles = [
@@ -16,13 +19,20 @@ document.addEventListener('DOMContentLoaded', () => {
     { title: 'Writing Your First Novel', description: 'Turn your ideas into a bestselling book...', productUrl: 'https://ratakan.com/product/writing-course' },
   ];
 
-  // Function to render all articles
+  const itemsPerPage = 5;
+  let currentPage = 1;
+
+  // Function to render articles for the current page
   function renderArticles() {
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const currentArticles = articles.slice(start, end);
+
     // Clear previous articles
     articleContainer.innerHTML = '';
 
-    // Render all articles
-    articles.forEach(article => {
+    // Render current articles
+    currentArticles.forEach(article => {
       const articleElement = document.createElement('article');
       articleElement.innerHTML = `
         <h3>${article.title}</h3>
@@ -32,7 +42,14 @@ document.addEventListener('DOMContentLoaded', () => {
       articleContainer.appendChild(articleElement);
     });
 
-    // Attach referral link handlers
+    // Update page info
+    pageInfo.textContent = `Page ${currentPage} of ${Math.ceil(articles.length / itemsPerPage)}`;
+
+    // Enable/disable buttons based on current page
+    prevPageButton.disabled = currentPage === 1;
+    nextPageButton.disabled = currentPage === Math.ceil(articles.length / itemsPerPage);
+
+    // Reattach referral link functionality
     attachReferralLinkHandlers();
   }
 
@@ -58,6 +75,21 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Pagination event listeners
+  prevPageButton.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      renderArticles();
+    }
+  });
+
+  nextPageButton.addEventListener('click', () => {
+    if (currentPage < Math.ceil(articles.length / itemsPerPage)) {
+      currentPage++;
+      renderArticles();
+    }
+  });
 
   // Generate referral links button
   generateLinksButton.addEventListener('click', () => {
